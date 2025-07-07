@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,6 +6,8 @@ import StateAboutSection from '@/components/state/StateAboutSection';
 import StateSearchGuide from '@/components/state/StateSearchGuide';
 import StateCitiesSidebar from '@/components/state/StateCitiesSidebar';
 import StateContactHelp from '@/components/state/StateContactHelp';
+import StateHousingPrograms from '@/components/state/StateHousingPrograms';
+import StateKeyFeatures from '@/components/state/StateKeyFeatures';
 import { StateDataType, CityType } from './StateData';
 import { Database } from "@/integrations/supabase/types";
 
@@ -37,19 +38,18 @@ const StatePage: React.FC<StatePageProps> = ({
       
       <StateHeroSection stateName={stateName} stateData={stateData} />
 
+      <StateHousingPrograms stateName={stateName} />
+
       <div className="container mx-auto px-4 py-8 md:py-16">
         <div className="max-w-7xl mx-auto">
-          {/* Mobile: Stack vertically, Desktop: Side by side */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             
-            {/* Main content - Full width on mobile */}
-            <div className="lg:col-span-2 space-y-6 md:space-y-8">
+            <div className="lg:col-span-2 space-y-8">
               <StateAboutSection stateName={stateName} stateData={stateData} />
               <StateSearchGuide stateName={stateName} />
             </div>
 
-            {/* Sidebar - Full width on mobile, stacked after main content */}
-            <div className="space-y-6 order-first lg:order-last">
+            <div className="space-y-8">
               <StateCitiesSidebar 
                 topCities={topCities} 
                 stateName={stateName} 
@@ -60,6 +60,8 @@ const StatePage: React.FC<StatePageProps> = ({
           </div>
         </div>
       </div>
+
+      <StateKeyFeatures stateName={stateName} />
 
       <Footer />
     </div>
